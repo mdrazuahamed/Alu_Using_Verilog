@@ -3,4 +3,4 @@ Inside this ALU there are 32 bit carry save adder with 8 stage of pipelines wher
 Two years age I made this project and lost the .v file because I had to reinstall the windows for a reason.
 
 This code will work and I also have code for test bench.
-Feel free to ask me if anyone can help me or anyone need any help
+Feel free to ask me if anyone can help me to improve this project or if anyone need any help about the project.
