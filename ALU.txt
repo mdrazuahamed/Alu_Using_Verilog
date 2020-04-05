@@ -70,6 +70,7 @@ reg [31:0] Pf;
 		Pf<=P;
 		enf<=0;
 		end
+		
 		else if(select==3) begin 
 		//Only counter work
    		mf<=0;
