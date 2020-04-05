@@ -3,7 +3,7 @@ module trt_tw_csa_use_cla(S,COUT,A,B,clk,CIN);
             input CIN,clk;
             output reg [31:0]S;
             output reg COUT;
-
+// need wire to receive data from module
             reg [27:0]w2_a,w2_b;
             reg [23:0]w3_a,w3_b;
             reg [19:0]w4_a,w4_b;
@@ -12,7 +12,6 @@ module trt_tw_csa_use_cla(S,COUT,A,B,clk,CIN);
             reg [7:0]w7_a,w7_b;
             reg [3:0]w8_a,w8_b;
 
- //reg w1_cin;
             wire w1_cout;
             reg w2_cin;
             wire w2_cout;
@@ -54,7 +53,7 @@ four_bit_cla r1(Sw1[3:0],w1_cout,w1_a[3:0],w1_b[3:0],w1_cin);*/
                         w2_cin<=w1_cout;
                         w2_a[27:0]<=A[31:4];
                         w2_b[27:0]<=B[31:4];
-                        //r2(Sw2[3:0],w2_cout,w2_a[3:0],w2_b[3:0],w2_cin);
+//r2(Sw2[3:0],w2_cout,w2_a[3:0],w2_b[3:0],w2_cin);
 
                         w2_sum[7:0]<={Sw2[3:0],w1_sum[3:0]};
                         w3_cin<=w2_cout;
@@ -63,7 +62,8 @@ four_bit_cla r1(Sw1[3:0],w1_cout,w1_a[3:0],w1_b[3:0],w1_cin);*/
 
 
 
-                        w3_sum[11:0]<={Sw3[3:0],w2_sum[7:0]};//concatenate
+                        w3_sum[11:0]<={Sw3[3:0],w2_sum[7:0]};
+ //concatenate
                         w4_cin<=w3_cout;
                         w4_a[19:0]<=w3_a[23:4];
                         w4_b[19:0]<=w3_b[23:4];
@@ -89,7 +89,7 @@ four_bit_cla r1(Sw1[3:0],w1_cout,w1_a[3:0],w1_b[3:0],w1_cin);*/
 
                         w7_sum[27:0]<={Sw7[3:0],w6_sum[23:0]}; 
                         w8_cin<=w7_cout;
-                        //w4_sum[11:0]<=w3_sum[11:0];
+//w4_sum[11:0]<=w3_sum[11:0];
                         w8_a[3:0]<=w7_a[7:4];
                         w8_b[3:0]<=w7_b[7:4];
 
@@ -100,14 +100,14 @@ four_bit_cla r1(Sw1[3:0],w1_cout,w1_a[3:0],w1_b[3:0],w1_cin);*/
 
             four_bit_cla r1(Sw1[3:0],w1_cout,A[3:0],B[3:0],CIN);
 
-            four_bit_cla r2(Sw2[7:4],w2_cout,w2_a[7:4],w2_b[7:4],w2_cin);
+            four_bit_cla r2(Sw2[3:0],w2_cout,w2_a[3:0],w2_b[3:0],w2_cin);
 
 
-            four_bit_cla r3(Sw3[11:8],w3_cout,w3_a[11:8],w3_b[11:8],w3_cin);
+            four_bit_cla r3(Sw3[3:0],w3_cout,w3_a[11:8],w3_b[3:0],w3_cin);
 
-            four_bit_cla r4(Sw4[15:12],w4_cout,w4_a[15:12],w4_b[15:12],w4_cin);
+            four_bit_cla r4(Sw4[3:0],w4_cout,w4_a[3:0],w4_b[3:0],w4_cin);
 
-            four_bit_cla r5(Sw5[19:16],w5_cout,w5_a[19:16],w5_b[19:16],w5_cin);
+            four_bit_cla r5(Sw5[3:0],w5_cout,w5_a[3:0],w5_b[3:0],w5_cin);
 
             four_bit_cla r6(Sw6[3:0],w6_cout,w6_a[3:0],w6_b[3:0],w6_cin);
 
